@@ -3,8 +3,8 @@
   BTI/UFRN 2023.2 - Sistemas Operacionais: Exercícios
   
   <p align="center">
-    <img src="https://img.shields.io/github/last-commit/JosManoel/LP2-2023.1-BTI-UFRN/main">
-    <img src="https://img.shields.io/github/license/JosManoel/LP1-2023.1-BTI-UFRN">
+    <img src="https://img.shields.io/github/last-commit/JosManoel/SO-2023.2-BTI-UFRN">
+    <img src="https://img.shields.io/github/license/JosManoel/SO-2023.2-BTI-UFRN">
   </p>
 </h1>
 
