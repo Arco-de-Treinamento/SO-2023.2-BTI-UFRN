@@ -10,10 +10,13 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    src/game/game.cpp
 
 HEADERS += \
-    mainwindow.h
+    config/screen_config.h \
+    mainwindow.h \
+    src/game/game.h
 
 FORMS += \
     mainwindow.ui

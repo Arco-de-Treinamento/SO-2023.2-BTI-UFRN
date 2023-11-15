@@ -1,0 +1,8 @@
+#ifndef SCREEN_CONFIG_H
+#define SCREEN_CONFIG_H
+
+#define SCREEN_WIDTH 600
+#define SCREEN_HEIGHT 180
+#define SCREEN_BORDER 48
+
+#endif // SCREEN_CONFIG_H
