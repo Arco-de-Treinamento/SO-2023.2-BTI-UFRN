@@ -11,11 +11,14 @@ class Game : public QGraphicsScene{
 public:
     explicit Game(QWidget *parent = nullptr);
     ~Game();
+
 private:
+    void gameStart();
+    void gameOver();
+    void speedUp();
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;
-    QGraphicsTextItem *text;
 };
 
 #endif // GAME_H
