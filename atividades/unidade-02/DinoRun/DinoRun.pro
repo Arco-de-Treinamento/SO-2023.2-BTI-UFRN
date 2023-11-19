@@ -11,6 +11,8 @@ CONFIG += c++17
 SOURCES += \
     assets/image/sprites.cpp \
     main.cpp \
+    src/cactus/cactus.cpp \
+    src/cactus/cactussprites.cpp \
     src/floor/floor.cpp \
     src/floor/floorsprites.cpp \
     src/mainwindow/mainwindow.cpp \
@@ -20,6 +22,8 @@ HEADERS += \
     assets/image/sprites.h \
     config/game_config.h \
     config/screen_config.h \
+    src/cactus/cactus.h \
+    src/cactus/cactussprites.h \
     src/floor/floor.h \
     src/floor/floorsprites.h \
     src/mainwindow/mainwindow.h \

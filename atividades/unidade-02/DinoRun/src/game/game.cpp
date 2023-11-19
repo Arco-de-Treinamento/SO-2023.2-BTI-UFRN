@@ -12,8 +12,10 @@ Game::~Game(){
 
 void Game::gameStart(){
     Floor *floor = new Floor(this);
+    Cactus *cactus = new Cactus(this);
 
     this->addItem(floor);
+    this->addItem(cactus);
 }
 
 void Game::gameOver(){

@@ -8,4 +8,3 @@ floorSprites::floorSprites(){
 floorSprites::~floorSprites(){
     texture.clear();
 }
-

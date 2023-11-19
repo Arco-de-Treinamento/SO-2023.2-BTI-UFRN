@@ -5,7 +5,9 @@
 #include <QKeyEvent>
 #include <QGraphicsTextItem>
 #include "./config/game_config.h"
+
 #include "./src/floor/floor.h"
+#include "./src/cactus/cactus.h"
 
 class Game : public QGraphicsScene{
     Q_OBJECT

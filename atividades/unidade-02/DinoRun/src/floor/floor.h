@@ -6,15 +6,16 @@
 #include <QTime>
 #include "floorsprites.h"
 
-#define POS_X 0
-#define POS_Y 200
-
 class Floor : public QObject, public QGraphicsItemGroup{
     Q_OBJECT
 
 public:    
     explicit Floor(QObject *parent = nullptr);
     ~Floor();
+
+private:
+    int POS_X = 0;
+    int POS_Y = 200;
 };
 
 #endif // FLOOR_H
