@@ -8,6 +8,7 @@
 
 #include "./src/floor/floor.h"
 #include "./src/cactus/cactus.h"
+#include "./src/dino/dino.h"
 
 class Game : public QGraphicsScene{
     Q_OBJECT

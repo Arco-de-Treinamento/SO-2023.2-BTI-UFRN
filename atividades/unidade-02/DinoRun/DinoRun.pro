@@ -13,6 +13,8 @@ SOURCES += \
     main.cpp \
     src/cactus/cactus.cpp \
     src/cactus/cactussprites.cpp \
+    src/dino/dino.cpp \
+    src/dino/dinosprites.cpp \
     src/floor/floor.cpp \
     src/floor/floorsprites.cpp \
     src/mainwindow/mainwindow.cpp \
@@ -24,6 +26,8 @@ HEADERS += \
     config/screen_config.h \
     src/cactus/cactus.h \
     src/cactus/cactussprites.h \
+    src/dino/dino.h \
+    src/dino/dinosprites.h \
     src/floor/floor.h \
     src/floor/floorsprites.h \
     src/mainwindow/mainwindow.h \
