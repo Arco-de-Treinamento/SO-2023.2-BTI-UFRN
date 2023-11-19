@@ -1,9 +1,9 @@
-#include "game.h"
-#include <QKeyEvent>
 #include <iostream>
+#include "game.h"
 
 Game::Game(QWidget *parent){
     this->setBackgroundBrush(Qt::white);
+    gameStart();
 }
 
 Game::~Game(){
@@ -11,7 +11,9 @@ Game::~Game(){
 }
 
 void Game::gameStart(){
+    Floor *floor = new Floor(this);
 
+    this->addItem(floor);
 }
 
 void Game::gameOver(){

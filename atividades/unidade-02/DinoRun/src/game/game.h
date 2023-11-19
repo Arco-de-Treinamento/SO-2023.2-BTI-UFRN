@@ -4,6 +4,8 @@
 #include <QGraphicsScene>
 #include <QKeyEvent>
 #include <QGraphicsTextItem>
+#include "./config/game_config.h"
+#include "./src/floor/floor.h"
 
 class Game : public QGraphicsScene{
     Q_OBJECT

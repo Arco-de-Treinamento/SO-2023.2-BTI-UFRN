@@ -6,38 +6,107 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>640</width>
+    <height>240</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>640</width>
+    <height>240</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>640</width>
+    <height>240</height>
+   </size>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
   </property>
   <property name="windowTitle">
    <string>Dino Run</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../../assets/assets.qrc">
+    <normaloff>:/assets/image/icon.png</normaloff>:/assets/image/icon.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="gridLayoutWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>640</width>
+     <height>240</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>640</width>
+     <height>240</height>
+    </size>
+   </property>
+   <property name="cursor">
+    <cursorShape>ArrowCursor</cursorShape>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <widget class="QGraphicsView" name="graphicsView">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>801</width>
-      <height>601</height>
+      <width>640</width>
+      <height>240</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout">
-     <property name="spacing">
-      <number>0</number>
-     </property>
-     <item row="0" column="0">
-      <widget class="QGraphicsView" name="graphicsView">
-       <property name="renderHints">
-        <set>QPainter::Antialiasing|QPainter::TextAntialiasing</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>640</width>
+      <height>240</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>648</width>
+      <height>248</height>
+     </size>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="sizeAdjustPolicy">
+     <enum>QAbstractScrollArea::AdjustIgnored</enum>
+    </property>
+    <property name="renderHints">
+     <set>QPainter::Antialiasing|QPainter::TextAntialiasing</set>
+    </property>
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../assets/assets.qrc"/>
+ </resources>
  <connections/>
 </ui>
