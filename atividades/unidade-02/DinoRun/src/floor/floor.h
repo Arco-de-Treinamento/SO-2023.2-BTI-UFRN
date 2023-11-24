@@ -15,7 +15,7 @@ public:
 
 private:
     int POS_X = 0;
-    int POS_Y = 200;
+    int POS_Y = 180;
 };
 
 #endif // FLOOR_H

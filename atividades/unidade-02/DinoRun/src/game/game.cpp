@@ -1,12 +1,29 @@
 #include <iostream>
+#include <QTime>
 #include "game.h"
 
 Game::Game(QWidget *parent){
     this->setBackgroundBrush(Qt::white);
-    gameStart();
+    QTimer::singleShot(100);
+
+    gameInit();
 }
 
 Game::~Game(){
+
+}
+
+void Game::gameInit(){
+    actionButton *startButton = new actionButton("Start !");
+
+    QGraphicsProxyWidget *proxy = this->addWidget(startButton);
+
+    connect(startButton, &QPushButton::clicked, this, &Game::gameStart);
+
+    // Centralize o botão
+    qreal x = (this->width() - startButton->width()) / 2;
+    qreal y = (this->height() - startButton->height()) / 2;
+    proxy->setPos(x, y);
 
 }
 
@@ -44,3 +61,5 @@ void Game::keyPressEvent(QKeyEvent *event){
             break;
     }
 }
+
+

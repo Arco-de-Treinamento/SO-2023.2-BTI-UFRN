@@ -2,13 +2,16 @@
 #define GAME_H
 
 #include <QGraphicsScene>
-#include <QKeyEvent>
 #include <QGraphicsTextItem>
+#include <QGraphicsProxyWidget>
+#include <QKeyEvent>
+
 #include "./config/game_config.h"
 
 #include "./src/floor/floor.h"
 #include "./src/cactus/cactus.h"
 #include "./src/dino/dino.h"
+#include "./src/button/actionbutton.h"
 
 class Game : public QGraphicsScene{
     Q_OBJECT
@@ -18,6 +21,7 @@ public:
     ~Game();
 
 private:
+    void gameInit();
     void gameStart();
     void gameOver();
     void speedUp();
