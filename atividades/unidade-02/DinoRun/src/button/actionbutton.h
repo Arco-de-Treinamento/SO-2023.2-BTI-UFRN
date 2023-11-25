@@ -14,7 +14,7 @@ public:
     ~actionButton();
 
 private:
-    int FONT_SIZE = 24;
+    int FONT_SIZE = 28;
 };
 
 #endif // ACTIONBUTTON_H

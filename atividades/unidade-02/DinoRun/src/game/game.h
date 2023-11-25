@@ -26,6 +26,14 @@ private:
     void gameOver();
     void speedUp();
 
+    Floor *floor;
+    Cactus *cactus;
+    Dino *dino;
+
+    QGraphicsProxyWidget *proxy;
+    actionButton *startButton;
+    actionButton *gameOverButton;
+
 protected:
     void keyPressEvent(QKeyEvent *event) override;
 };
