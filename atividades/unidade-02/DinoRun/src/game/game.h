@@ -34,6 +34,9 @@ private:
     actionButton *startButton;
     actionButton *gameOverButton;
 
+private slots:
+    void staredFloor();
+
 protected:
     void keyPressEvent(QKeyEvent *event) override;
 };

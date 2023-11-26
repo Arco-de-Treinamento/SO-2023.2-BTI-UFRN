@@ -36,13 +36,15 @@ void Game::gameInit(){
 void Game::gameStart(){
     this->removeItem(startButton->graphicsProxyWidget());
 
-    floor = new Floor(1, this);
+    floor = new Floor(60, this);
     cactus = new Cactus(this);
     dino = new Dino(this);
 
     this->addItem(floor);
     this->addItem(cactus);
     this->addItem(dino);
+
+    connect(floor, &Floor::started, this, &Game::staredFloor);
 }
 
 void Game::gameOver(){
@@ -61,6 +63,11 @@ void Game::speedUp(){
 
 }
 
+void Game::staredFloor()
+{
+    std::cout << "PISO INICIOU MOVIMENTO" << std::endl;
+}
+
 void Game::keyPressEvent(QKeyEvent *event){
     switch(event->key()){
         case Qt::Key_Space:
@@ -77,5 +84,3 @@ void Game::keyPressEvent(QKeyEvent *event){
             break;
     }
 }
-
-

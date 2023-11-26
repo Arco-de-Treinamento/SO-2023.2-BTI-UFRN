@@ -15,8 +15,8 @@ Floor::Floor(const int currentSpeed, QObject *parent) : QObject(parent){
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Floor::moveFloor);
 
-    // Atualiza a cada 60 frames por segundos
-    timer->start(1000/60);
+    // Atualiza a cada n frames por segundos
+    timer->start(1000/speed);
 }
 
 Floor::~Floor(){
@@ -33,8 +33,11 @@ void Floor::setSpeed(int newSpeed){
 }
 
 void Floor::moveFloor(){
-    setPos(x() - speed, y());
+    setPos(x() - PIXEL_COUNT, y());
 
-    if(x() + 600 == 0)
+    if((x() + LENGTH) == 599)
+        emit started();
+
+    if(x() + LENGTH == 0)
         this->~Floor();
 }

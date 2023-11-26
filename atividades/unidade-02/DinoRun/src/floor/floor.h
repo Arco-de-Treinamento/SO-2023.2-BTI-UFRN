@@ -18,8 +18,14 @@ public:
 private:
     int POS_X = 0;
     int POS_Y = 180;
+    int PIXEL_COUNT = 1;
+    const int LENGTH = 600;
+
     int speed;
     QTimer *timer;
+
+signals:
+    void started();
 
 private slots:
     void moveFloor();
