@@ -1,16 +1,17 @@
 #include <iostream>
 #include "floor.h"
 
-Floor::Floor(const int currentSpeed, QObject *parent) : QObject(parent){
-    this->setSpeed(currentSpeed);
+Floor::Floor(int posX, int posY, int currentSpeed, QObject *parent) : QObject(parent){
+    speed = currentSpeed;
+    AUX_POS_X = posX;
 
     floorSprites *sprites = new floorSprites();
     QGraphicsPixmapItem *floor = new QGraphicsPixmapItem(sprites->texture[0], this);
 
     floor->setPixmap(sprites->texture[0]);
-    floor->setPos(POS_X,POS_Y);
+    floor->setPos(posX,posY);
 
-    this->addToGroup(floor);
+    addToGroup(floor);
 
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Floor::moveFloor);
@@ -25,19 +26,26 @@ Floor::~Floor(){
 
     while (!childItems().isEmpty())
         delete childItems().first();
-
 }
 
 void Floor::setSpeed(int newSpeed){
     speed = newSpeed;
+
+    // Reinicia o timer com nova velocidade
+    if(timer != nullptr) {
+        timer->stop();
+        timer->start(1000/speed);
+    }
 }
 
 void Floor::moveFloor(){
+    // Setando pos real e relativa
+    AUX_POS_X = AUX_POS_X - PIXEL_COUNT;
     setPos(x() - PIXEL_COUNT, y());
 
-    if((x() + LENGTH) == 599)
+    if(AUX_POS_X + LENGTH == 599)
         emit started();
 
-    if(x() + LENGTH == 0)
+    if(AUX_POS_X + LENGTH == 0)
         this->~Floor();
 }

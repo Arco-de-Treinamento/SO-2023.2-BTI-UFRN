@@ -8,7 +8,7 @@
 
 #include "./config/game_config.h"
 
-#include "./src/floor/floor.h"
+#include "./src/floor/horizonline.h"
 #include "./src/cactus/cactus.h"
 #include "./src/dino/dino.h"
 #include "./src/button/actionbutton.h"
@@ -26,16 +26,13 @@ private:
     void gameOver();
     void speedUp();
 
-    Floor *floor;
     Cactus *cactus;
     Dino *dino;
+    Horizonline *horizonline;
 
     QGraphicsProxyWidget *proxy;
     actionButton *startButton;
     actionButton *gameOverButton;
-
-private slots:
-    void staredFloor();
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;

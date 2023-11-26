@@ -17,6 +17,7 @@ SOURCES += \
     src/dino/dinosprites.cpp \
     src/floor/floor.cpp \
     src/floor/floorsprites.cpp \
+    src/floor/horizonline.cpp \
     src/mainwindow/mainwindow.cpp \
     src/game/game.cpp \
 
@@ -30,6 +31,7 @@ HEADERS += \
     src/dino/dinosprites.h \
     src/floor/floor.h \
     src/floor/floorsprites.h \
+    src/floor/horizonline.h \
     src/mainwindow/mainwindow.h \
     src/game/game.h \
 

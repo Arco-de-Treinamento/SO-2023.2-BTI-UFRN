@@ -13,9 +13,9 @@ Game::Game(QWidget *parent){
 }
 
 Game::~Game(){
-    this->removeItem(floor);
     this->removeItem(cactus);
     this->removeItem(dino);
+    this->removeItem(horizonline);
 
     delete proxy;
     proxy = nullptr;
@@ -36,15 +36,13 @@ void Game::gameInit(){
 void Game::gameStart(){
     this->removeItem(startButton->graphicsProxyWidget());
 
-    floor = new Floor(60, this);
     cactus = new Cactus(this);
     dino = new Dino(this);
+    horizonline = new Horizonline(60, this);
 
-    this->addItem(floor);
+    this->addItem(horizonline);
     this->addItem(cactus);
     this->addItem(dino);
-
-    connect(floor, &Floor::started, this, &Game::staredFloor);
 }
 
 void Game::gameOver(){
@@ -60,12 +58,7 @@ void Game::gameOver(){
 }
 
 void Game::speedUp(){
-
-}
-
-void Game::staredFloor()
-{
-    std::cout << "PISO INICIOU MOVIMENTO" << std::endl;
+    horizonline->speedUp();
 }
 
 void Game::keyPressEvent(QKeyEvent *event){
@@ -77,6 +70,7 @@ void Game::keyPressEvent(QKeyEvent *event){
 
         case Qt::Key_Up:
             std::cout << "UP" << std::endl;
+            speedUp();
             break;
 
         case Qt::Key_Down:

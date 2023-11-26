@@ -10,16 +10,16 @@ class Floor : public QObject, public QGraphicsItemGroup{
     Q_OBJECT
 
 public:
-    explicit Floor(const int currentSpeed, QObject *parent = nullptr);
+    explicit Floor(int posX, int posY, int currentSpeed, QObject *parent = nullptr);
     ~Floor();
 
     void setSpeed(int newSpeed);
 
 private:
-    int POS_X = 0;
-    int POS_Y = 180;
     int PIXEL_COUNT = 1;
-    const int LENGTH = 600;
+    int LENGTH = 600;
+
+    int AUX_POS_X;
 
     int speed;
     QTimer *timer;
