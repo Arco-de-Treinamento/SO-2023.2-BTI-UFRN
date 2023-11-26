@@ -13,6 +13,9 @@ public:
     ~floorSprites();
 
     QList <QPixmap> texture;
+
+    int WIDTH_TEX = 600;
+    int HEIGTH_TEX = 12;
 };
 
 #endif // FLOORSPRITES_H

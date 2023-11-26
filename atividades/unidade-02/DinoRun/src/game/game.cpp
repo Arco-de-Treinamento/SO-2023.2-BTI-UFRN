@@ -36,7 +36,7 @@ void Game::gameInit(){
 void Game::gameStart(){
     this->removeItem(startButton->graphicsProxyWidget());
 
-    floor = new Floor(this);
+    floor = new Floor(1, this);
     cactus = new Cactus(this);
     dino = new Dino(this);
 

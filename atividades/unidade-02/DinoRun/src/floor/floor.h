@@ -3,19 +3,26 @@
 
 #include <QGraphicsPixmapItem>
 #include <QGraphicsItemGroup>
-#include <QTime>
+#include <QTimer>
 #include "floorsprites.h"
 
 class Floor : public QObject, public QGraphicsItemGroup{
     Q_OBJECT
 
-public:    
-    explicit Floor(QObject *parent = nullptr);
+public:
+    explicit Floor(const int currentSpeed, QObject *parent = nullptr);
     ~Floor();
+
+    void setSpeed(int newSpeed);
 
 private:
     int POS_X = 0;
     int POS_Y = 180;
+    int speed;
+    QTimer *timer;
+
+private slots:
+    void moveFloor();
 };
 
 #endif // FLOOR_H
