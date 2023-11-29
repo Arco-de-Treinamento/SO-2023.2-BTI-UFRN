@@ -3,18 +3,33 @@
 
 #include <QGraphicsPixmapItem>
 #include <QGraphicsItemGroup>
-#include <QTime>
+#include <QTimer>
+#include <cstdlib>
+#include <ctime>
 #include "cactussprites.h"
 
 class Cactus : public QObject, public QGraphicsItemGroup{
     Q_OBJECT
 public:
-    explicit Cactus(QObject *parent = nullptr);
+    explicit Cactus(int posX, int posY, int currentSpeed, QObject *parent = nullptr);
     ~Cactus();
 
+    void setSpeed(int newSpeed);
+    int getPos();
+
 private:
-    int POS_X = 14;
-    int POS_Y = 170;
+    int PIXEL_COUNT = 1;
+    int LENGTH;
+    int TYPE_CACTUS;
+    int AUX_POS_X;
+
+    int speed;
+    QTimer *timer;
+
+    int getRand();
+
+private slots:
+    void moveCactus();
 };
 
 #endif // CACTUS_H

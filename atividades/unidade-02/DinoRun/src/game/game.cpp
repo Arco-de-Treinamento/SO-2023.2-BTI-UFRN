@@ -36,7 +36,7 @@ void Game::gameInit(){
 void Game::gameStart(){
     this->removeItem(startButton->graphicsProxyWidget());
 
-    cactus = new Cactus(this);
+    cactus = new Cactus(610, 160, 60, this);
     dino = new Dino(this);
     horizonline = new Horizonline(60, this);
 
