@@ -13,8 +13,8 @@ Game::Game(QWidget *parent){
 }
 
 Game::~Game(){
-    this->removeItem(cactus);
     this->removeItem(dino);
+    this->removeItem(obstacle);
     this->removeItem(horizonline);
 
     delete proxy;
@@ -36,12 +36,12 @@ void Game::gameInit(){
 void Game::gameStart(){
     this->removeItem(startButton->graphicsProxyWidget());
 
-    cactus = new Cactus(610, 160, 60, this);
     dino = new Dino(this);
     horizonline = new Horizonline(60, this);
+    obstacle = new Obstacle(60,this);
 
     this->addItem(horizonline);
-    this->addItem(cactus);
+    this->addItem(obstacle);
     this->addItem(dino);
 }
 
@@ -59,6 +59,7 @@ void Game::gameOver(){
 
 void Game::speedUp(){
     horizonline->speedUp();
+    obstacle->speedUp();
 }
 
 void Game::keyPressEvent(QKeyEvent *event){

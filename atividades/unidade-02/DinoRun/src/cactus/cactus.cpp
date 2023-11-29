@@ -1,13 +1,16 @@
 #include <iostream>
 #include "cactus.h"
 
-Cactus::Cactus(int posX, int posY, int currentSpeed, QObject *parent){
+Cactus::Cactus(int posX, int posY, int currentSpeed, int posAlert, QObject *parent){
     speed = currentSpeed;
-    AUX_POS_X = posX;
     TYPE_CACTUS = this->getRand();
 
     cactusSprites *sprites = new cactusSprites();
     QGraphicsPixmapItem *cactus = new QGraphicsPixmapItem(sprites->texture[TYPE_CACTUS], this);
+
+    LENGTH = sprites->texture[TYPE_CACTUS].width();
+    ALERT_POS_X = posAlert;
+    AUX_POS_X = posX;
 
     cactus->setPixmap(sprites->texture[TYPE_CACTUS]);
     cactus->setPos(posX, posY);
@@ -22,7 +25,6 @@ Cactus::Cactus(int posX, int posY, int currentSpeed, QObject *parent){
 }
 
 Cactus::~Cactus(){
-    std::cout << "morreu" << std::endl;
     delete timer;
     timer = nullptr;
 
@@ -50,10 +52,18 @@ int Cactus::getRand(){
     return std::rand() % 3;  // entre 0 e 2
 }
 
+void Cactus::setPosAlert(int pos){
+    ALERT_POS_X = pos;
+}
+
 void Cactus::moveCactus(){
     // Setando pos real e relativa
     AUX_POS_X = AUX_POS_X - PIXEL_COUNT;
     setPos(x() - PIXEL_COUNT, y());
+
+    // Sinal de alerta para criar outro cacto
+    if(AUX_POS_X + LENGTH == ALERT_POS_X)
+        emit alertPos();
 
     if(AUX_POS_X + LENGTH == 0)
         this->~Cactus();

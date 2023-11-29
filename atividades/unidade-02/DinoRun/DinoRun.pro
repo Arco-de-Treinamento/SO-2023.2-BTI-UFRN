@@ -13,6 +13,7 @@ SOURCES += \
     src/button/actionbutton.cpp \
     src/cactus/cactus.cpp \
     src/cactus/cactussprites.cpp \
+    src/cactus/obstacle.cpp \
     src/dino/dino.cpp \
     src/dino/dinosprites.cpp \
     src/floor/floor.cpp \
@@ -27,6 +28,7 @@ HEADERS += \
     src/button/actionbutton.h \
     src/cactus/cactus.h \
     src/cactus/cactussprites.h \
+    src/cactus/obstacle.h \
     src/dino/dino.h \
     src/dino/dinosprites.h \
     src/floor/floor.h \

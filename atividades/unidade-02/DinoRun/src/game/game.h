@@ -9,7 +9,7 @@
 #include "./config/game_config.h"
 
 #include "./src/floor/horizonline.h"
-#include "./src/cactus/cactus.h"
+#include "./src/cactus/obstacle.h"
 #include "./src/dino/dino.h"
 #include "./src/button/actionbutton.h"
 
@@ -26,8 +26,8 @@ private:
     void gameOver();
     void speedUp();
 
-    Cactus *cactus;
     Dino *dino;
+    Obstacle *obstacle;
     Horizonline *horizonline;
 
     QGraphicsProxyWidget *proxy;
