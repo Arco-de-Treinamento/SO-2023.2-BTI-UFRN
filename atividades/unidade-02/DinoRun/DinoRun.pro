@@ -23,6 +23,7 @@ SOURCES += \
     src/game/game.cpp \
 
 HEADERS += \
+    config/circularlist.h \
     config/game_config.h \
     config/screen_config.h \
     src/button/actionbutton.h \

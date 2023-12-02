@@ -6,13 +6,17 @@
 #include <QString>
 #include <QPixmap>
 #include "./config/game_config.h"
+#include "./config/circularlist.h"
 
 class dinoSprites{
 public:
     dinoSprites();
     ~dinoSprites();
 
-    QList <QPixmap> texture;
+    CircularList <QPixmap> idle;
+    CircularList <QPixmap> walk;
+    QPixmap dead;
+
 };
 
 #endif // DINOSPRITES_H
