@@ -36,7 +36,7 @@ void Game::gameInit(){
 void Game::gameStart(){
     this->removeItem(startButton->graphicsProxyWidget());
 
-    dino = new Dino(this);
+    dino = new Dino(10, this);
     horizonline = new Horizonline(60, this);
     obstacle = new Obstacle(60,this);
 

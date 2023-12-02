@@ -16,7 +16,6 @@ public:
     CircularList <QPixmap> idle;
     CircularList <QPixmap> walk;
     QPixmap dead;
-
 };
 
 #endif // DINOSPRITES_H
