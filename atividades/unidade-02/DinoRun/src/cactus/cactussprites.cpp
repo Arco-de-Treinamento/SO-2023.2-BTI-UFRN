@@ -1,8 +1,13 @@
 #include "cactussprites.h"
 
 cactusSprites::cactusSprites(){
-    for(int c = 0; c < 3; c++)
-        texture.append(QPixmap(SPRITE_PATH).copy(QRect(QPoint(332 + c*25, 2), QSize(24 + c*25, 49))));
+    // Cacto I
+    texture.append(QPixmap(SPRITE_PATH).copy(QRect(QPoint(332, 2), QSize(24, 49))));
+    // Cacto II
+    texture.append(QPixmap(SPRITE_PATH).copy(QRect(QPoint(357, 2), QSize(49, 49))));
+    // Cacto III
+    texture.append(QPixmap(SPRITE_PATH).copy(QRect(QPoint(407, 2), QSize(74, 49))));
+
 }
 
 cactusSprites::~cactusSprites(){
