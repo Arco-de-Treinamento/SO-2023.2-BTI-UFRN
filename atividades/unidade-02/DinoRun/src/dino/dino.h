@@ -8,17 +8,18 @@
 
 class Dino : public QObject, public QGraphicsItemGroup{
     Q_OBJECT
+
 public:
-    explicit Dino(int currentSpeed,  QObject *parent = nullptr);
+    explicit Dino(int posX, int posY, int heightJump, int currentSpeed,  QObject *parent = nullptr);
     ~Dino();
 
     void speedUp();
     void setSpeed(int newSpeed);
+    void dinoJump();
     int getPos();
 
 private:
-    int POS_X = 48;
-    int POS_Y = 160;
+    int HEIGHT_JUMP;
     int PIXEL_COUNT = 1;
     int CONST_UPDATE_SPEED = 10;
 
@@ -30,12 +31,14 @@ private:
 
 signals:
     void isJumped();
+    void isWalking();
+
+public slots:
+    void dinoDead();
 
 private slots:
     void dinoIdle();
     void dinoWalk();
-    void dinoJump();
-    void dinoDead();
 };
 
 #endif // DINO_H

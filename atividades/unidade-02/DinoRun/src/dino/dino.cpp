@@ -1,14 +1,15 @@
 #include <iostream>
 #include "dino.h"
 
-Dino::Dino(int currentSpeed, QObject *parent){
+Dino::Dino(int posX, int posY, int heightJump, int currentSpeed, QObject *parent){
     speed = currentSpeed;
+    HEIGHT_JUMP = heightJump;
 
     sprites = new dinoSprites();
     dino = new QGraphicsPixmapItem(sprites->idle.get(0), this);
 
     dino->setPixmap(sprites->idle.get(0));
-    dino->setPos(POS_X, POS_Y);
+    dino->setPos(posX, posY);
 
     this->addToGroup(dino);
 
@@ -44,10 +45,6 @@ void Dino::setSpeed(int newSpeed){
     }
 }
 
-int Dino::getPos(){
-    return this->POS_X;
-}
-
 void Dino::dinoIdle(){
     dino->setPixmap(sprites->idle.next());
 }
@@ -57,7 +54,8 @@ void Dino::dinoWalk(){
 }
 
 void Dino::dinoJump(){
-
+    emit isJumped();
+    emit isWalking();
 }
 
 void Dino::dinoDead(){

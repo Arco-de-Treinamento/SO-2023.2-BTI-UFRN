@@ -11,7 +11,7 @@
 class Cactus : public QObject, public QGraphicsItemGroup{
     Q_OBJECT
 public:
-    explicit Cactus(int posX, int posY, int currentSpeed, int posAlert, QObject *parent = nullptr);
+    explicit Cactus(int posX, int posY, int currentSpeed, int posCollider, int posAlert, QObject *parent = nullptr);
     ~Cactus();
 
     void setSpeed(int newSpeed);
@@ -24,6 +24,7 @@ private:
     int TYPE_CACTUS;
     int AUX_POS_X;
     int ALERT_POS_X;
+    int POS_COLLIDER_X;
 
     int speed;
     QTimer *timer;
@@ -32,6 +33,7 @@ private:
 
 signals:
     void alertPos();
+    void isCactusCollided();
 
 private slots:
     void moveCactus();

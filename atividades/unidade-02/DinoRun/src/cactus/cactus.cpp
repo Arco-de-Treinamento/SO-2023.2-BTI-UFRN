@@ -1,9 +1,10 @@
 #include <iostream>
 #include "cactus.h"
 
-Cactus::Cactus(int posX, int posY, int currentSpeed, int posAlert, QObject *parent){
+Cactus::Cactus(int posX, int posY, int currentSpeed, int posCollider, int posAlert, QObject *parent){
     speed = currentSpeed;
     TYPE_CACTUS = this->getRand();
+    POS_COLLIDER_X = posCollider;
 
     cactusSprites *sprites = new cactusSprites();
     QGraphicsPixmapItem *cactus = new QGraphicsPixmapItem(sprites->texture[TYPE_CACTUS], this);
@@ -35,10 +36,14 @@ Cactus::~Cactus(){
 void Cactus::setSpeed(int newSpeed){
     speed = newSpeed;
 
-    // Reinicia o timer com nova velocidade
-    if(timer != nullptr){
+    if(speed != 0){
+        // Reinicia o timer com nova velocidade
+        if(timer != nullptr){
+            timer->stop();
+            timer->start(1000/speed);
+        }
+    } else {
         timer->stop();
-        timer->start(1000/speed);
     }
 }
 
@@ -64,6 +69,9 @@ void Cactus::moveCactus(){
     // Sinal de alerta para criar outro cacto
     if(AUX_POS_X + LENGTH == ALERT_POS_X)
         emit alertPos();
+
+    if(AUX_POS_X == POS_COLLIDER_X)
+        emit isCactusCollided();
 
     if(AUX_POS_X + LENGTH == 0)
         this->~Cactus();

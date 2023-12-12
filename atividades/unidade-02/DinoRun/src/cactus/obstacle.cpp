@@ -2,8 +2,9 @@
 #include "obstacle.h"
 
 
-Obstacle::Obstacle(const int currentSpeed, QObject *parent){
+Obstacle::Obstacle(const int posCollider, const int currentSpeed, QObject *parent){
     speed = currentSpeed;
+    POS_COLLIDER = posCollider;
     createCactus();
 }
 
@@ -31,10 +32,23 @@ int Obstacle::getRand(){
 
 void Obstacle::createCactus(){
     // Condicao de elatoriedade
-    Cactus *cactus = new Cactus(POS_X, POS_Y, speed, SCREEN_SIZE - (getRand() * INTERVAL_UNIT), this);
+    Cactus *cactus = new Cactus(POS_X, POS_Y, speed, POS_COLLIDER, SCREEN_SIZE - (getRand() * INTERVAL_UNIT), this);
+
     this->addToGroup(cactus);
 
     connect(cactus, &Cactus::alertPos, this, &Obstacle::createCactus);
+    connect(cactus, &Cactus::isCactusCollided, this, &Obstacle::checkCollider);
+
     obstacles.append(cactus);
 
+}
+
+void Obstacle::checkCollider(){
+    // Zera velocidade dos cactos
+    speed = 0;
+
+    for(Cactus* cactus : obstacles)
+        cactus->setSpeed(speed);
+
+    emit isCollided();
 }

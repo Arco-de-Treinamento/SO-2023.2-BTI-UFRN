@@ -28,6 +28,9 @@ private:
 
     bool isStarted = false;
 
+public slots:
+    void isGameOver();
+
 private slots:
     void createFloor();
 };

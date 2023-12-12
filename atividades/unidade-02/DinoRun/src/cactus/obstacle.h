@@ -13,7 +13,7 @@ class Obstacle : public QObject, public QGraphicsItemGroup{
     Q_OBJECT
 
 public:
-    explicit Obstacle(const int currentSpeed, QObject *parent = nullptr);
+    explicit Obstacle(const int posCollider, const int currentSpeed, QObject *parent = nullptr);
     ~Obstacle();
 
     void speedUp();
@@ -22,6 +22,7 @@ public:
 private:
     int POS_Y = 150;
     int POS_X = 610;
+    int POS_COLLIDER;
     int CONST_UPDATE_SPEED = 10;
     int INTERVAL_UNIT = 48;
     int MAX_UNIT_INTERVAL = 10;
@@ -34,9 +35,14 @@ private:
 
     int getRand();
 
+signals:
+    void isCollided();
+
+
 
 private slots:
     void createCactus();
+    void checkCollider();
 };
 
 #endif // OBSTACLE_H

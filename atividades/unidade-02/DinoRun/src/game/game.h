@@ -1,10 +1,12 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <QApplication>
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>
 #include <QGraphicsProxyWidget>
 #include <QKeyEvent>
+#include <QTimer>
 
 #include "./config/game_config.h"
 
@@ -21,11 +23,6 @@ public:
     ~Game();
 
 private:
-    void gameInit();
-    void gameStart();
-    void gameOver();
-    void speedUp();
-
     Dino *dino;
     Obstacle *obstacle;
     Horizonline *horizonline;
@@ -33,6 +30,12 @@ private:
     QGraphicsProxyWidget *proxy;
     actionButton *startButton;
     actionButton *gameOverButton;
+
+private slots:
+    void gameInit();
+    void gameStart();
+    void gameOver();
+    void speedUp();
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;

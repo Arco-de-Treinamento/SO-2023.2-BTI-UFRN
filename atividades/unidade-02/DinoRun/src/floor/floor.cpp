@@ -31,11 +31,16 @@ Floor::~Floor(){
 void Floor::setSpeed(int newSpeed){
     speed = newSpeed;
 
-    // Reinicia o timer com nova velocidade
-    if(timer != nullptr) {
+    if(speed != 0){
+        // Reinicia o timer com nova velocidade
+        if(timer != nullptr) {
+            timer->stop();
+            timer->start(1000/speed);
+        }
+    } else {
         timer->stop();
-        timer->start(1000/speed);
     }
+
 }
 
 void Floor::moveFloor(){

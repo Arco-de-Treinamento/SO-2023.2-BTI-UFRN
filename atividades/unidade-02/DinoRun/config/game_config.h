@@ -7,4 +7,10 @@
 
 #define SPRITE_PATH QString(":/assets/image/sprites.png")
 
+// Dino parameters
+
+#define DINO_POS_X 48
+#define DINO_POS_Y 160
+#define DINO_HEIGHT_JUMP 60
+
 #endif // GAME_CONFIG_H

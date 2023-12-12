@@ -22,6 +22,14 @@ void Horizonline::setSpeed(int newSpeed){
     speed = newSpeed;
 }
 
+void Horizonline::isGameOver(){
+    // Zera velocidade do chao
+    speed = 0;
+
+    for(Floor* floor : floors)
+        floor->setSpeed(speed);
+}
+
 void Horizonline::createFloor(){
     Floor *floor = new Floor((!isStarted ? INIT_POS_X : POS_X), POS_Y, speed, this);
 

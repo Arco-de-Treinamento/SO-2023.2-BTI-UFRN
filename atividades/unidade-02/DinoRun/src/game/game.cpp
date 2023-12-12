@@ -1,6 +1,5 @@
 #include <iostream>
-#include <QApplication>
-#include <QTimer>
+
 #include "game.h"
 
 Game::Game(QWidget *parent){
@@ -36,13 +35,19 @@ void Game::gameInit(){
 void Game::gameStart(){
     this->removeItem(startButton->graphicsProxyWidget());
 
-    dino = new Dino(10, this);
-    horizonline = new Horizonline(60, this);
-    obstacle = new Obstacle(60,this);
+    dino = new Dino(DINO_POS_X, DINO_POS_Y, DINO_HEIGHT_JUMP, 10, this);
+    horizonline = new Horizonline(60, this);    
+    obstacle = new Obstacle(DINO_POS_X, 60, this);
 
     this->addItem(horizonline);
     this->addItem(obstacle);
     this->addItem(dino);
+
+    // connect(dino, &Dino::isJumped, this, &Game::test);
+
+    connect(obstacle, &Obstacle::isCollided, dino, &Dino::dinoDead);
+    connect(obstacle, &Obstacle::isCollided, horizonline, &Horizonline::isGameOver);
+    connect(obstacle, &Obstacle::isCollided, this, &Game::gameOver);
 }
 
 void Game::gameOver(){
@@ -62,11 +67,12 @@ void Game::speedUp(){
     obstacle->speedUp();
 }
 
+
 void Game::keyPressEvent(QKeyEvent *event){
     switch(event->key()){
         case Qt::Key_Space:
             std::cout << "space" << std::endl;
-            gameOver();
+            dino->dinoJump();
             break;
 
         case Qt::Key_Up:
@@ -76,6 +82,7 @@ void Game::keyPressEvent(QKeyEvent *event){
 
         case Qt::Key_Down:
             std::cout << "DOWN" << std::endl;
+            gameOver();
             break;
     }
 }
