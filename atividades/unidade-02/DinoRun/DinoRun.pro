@@ -21,6 +21,7 @@ SOURCES += \
     src/floor/horizonline.cpp \
     src/mainwindow/mainwindow.cpp \
     src/game/game.cpp \
+    src/score/score_game.cpp
 
 HEADERS += \
     config/circularlist.h \
@@ -37,6 +38,7 @@ HEADERS += \
     src/floor/horizonline.h \
     src/mainwindow/mainwindow.h \
     src/game/game.h \
+    src/score/score_game.h
 
 FORMS += \
     src/mainwindow/mainwindow.ui

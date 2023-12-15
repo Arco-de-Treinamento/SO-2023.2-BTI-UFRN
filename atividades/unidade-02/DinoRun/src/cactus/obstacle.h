@@ -38,6 +38,7 @@ private:
 
 signals:
     void isCollided();
+    void incrementScore();
 
 public slots:
     void setDinoJump(bool value);

@@ -13,4 +13,7 @@
 #define DINO_POS_Y 160
 #define DINO_HEIGHT_JUMP 90
 
+#define SCORE_POS_X 16
+#define SCORE_POS_Y 16
+
 #endif // GAME_CONFIG_H

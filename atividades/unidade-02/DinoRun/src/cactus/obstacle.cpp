@@ -49,7 +49,6 @@ void Obstacle::createCactus(){
 }
 
 void Obstacle::checkCollider(){
-    std::cout << "Valor do pulo" << isDinoJump << std::endl;
     if(!isDinoJump){
         // Zera velocidade dos cactos
         speed = 0;
@@ -59,7 +58,7 @@ void Obstacle::checkCollider(){
 
         emit isCollided();
     }else{
-        std::cout <<"pulou"<< std::endl;
+        emit incrementScore();
     }
 
 }

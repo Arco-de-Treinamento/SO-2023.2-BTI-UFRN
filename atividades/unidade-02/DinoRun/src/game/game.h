@@ -14,6 +14,7 @@
 #include "./src/cactus/obstacle.h"
 #include "./src/dino/dino.h"
 #include "./src/button/actionbutton.h"
+#include "./src/score/score_game.h"
 
 class Game : public QGraphicsScene{
     Q_OBJECT
@@ -26,6 +27,7 @@ private:
     Dino *dino;
     Obstacle *obstacle;
     Horizonline *horizonline;
+    GameScore *gameScore;
 
     QGraphicsProxyWidget *proxy;
     actionButton *startButton;
