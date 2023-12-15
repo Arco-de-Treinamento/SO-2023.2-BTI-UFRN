@@ -30,6 +30,7 @@ private:
     int SCREEN_SIZE = 600;
 
     int speed;
+    bool isDinoJump = false;
 
     QList<Cactus*> obstacles;
 
@@ -38,7 +39,8 @@ private:
 signals:
     void isCollided();
 
-
+public slots:
+    void setDinoJump(bool value);
 
 private slots:
     void createCactus();

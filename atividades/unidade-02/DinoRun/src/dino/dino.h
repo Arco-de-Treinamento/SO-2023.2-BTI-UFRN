@@ -15,30 +15,34 @@ public:
 
     void speedUp();
     void setSpeed(int newSpeed);
-    void dinoJump();
     int getPos();
 
 private:
     int HEIGHT_JUMP;
+    int SPEED_JUMP = 160;
     int PIXEL_COUNT = 1;
     int CONST_UPDATE_SPEED = 10;
 
     int speed;
     QTimer *timer;
+    QTimer *jumpTimer;
 
     QGraphicsPixmapItem *dino;
     dinoSprites *sprites;
 
 signals:
-    void isJumped();
-    void isWalking();
+    void isJump(bool value);
+    void jumpFinished();
 
 public slots:
     void dinoDead();
+    void dinoJump();
 
 private slots:
     void dinoIdle();
     void dinoWalk();
+    void jumpUp();
+    void jumpDown();
 };
 
 #endif // DINO_H

@@ -14,7 +14,9 @@ Dino::Dino(int posX, int posY, int heightJump, int currentSpeed, QObject *parent
     this->addToGroup(dino);
 
     timer = new QTimer(this);
+
     connect(timer, &QTimer::timeout, this, &Dino::dinoWalk);
+    connect(this, &Dino::jumpFinished, this, &Dino::dinoWalk);
 
     // Atualiza a cada n frames por segundo
     timer->start(1000/speed);
@@ -51,12 +53,55 @@ void Dino::dinoIdle(){
 
 void Dino::dinoWalk(){
     dino->setPixmap(sprites->walk.next());
+    emit isJump(false);
 }
 
 void Dino::dinoJump(){
-    emit isJumped();
-    emit isWalking();
+    emit isJump(true);
+
+    if(!timer->isActive()){
+        return;
+    }
+
+    timer->stop();
+    dino->setPixmap(sprites->jump);
+
+    // Cria um novo timer para a animação de pulo
+    jumpTimer = new QTimer(this);
+    connect(jumpTimer, &QTimer::timeout, this, &Dino::jumpUp);
+    jumpTimer->start(1000/SPEED_JUMP);
 }
+
+void Dino::jumpUp(){
+    static int count = 0;
+    dino->moveBy(0, -PIXEL_COUNT);
+    count++;
+
+    if(count == HEIGHT_JUMP){
+        disconnect(jumpTimer, &QTimer::timeout, this, &Dino::jumpUp);
+        connect(jumpTimer, &QTimer::timeout, this, &Dino::jumpDown);
+        count = 0;
+    }
+}
+
+void Dino::jumpDown(){
+    static int count = 0;
+    dino->moveBy(0, PIXEL_COUNT);
+    count++;
+
+    if(count == HEIGHT_JUMP){
+        jumpTimer->stop();
+        delete jumpTimer;
+        jumpTimer = nullptr;
+
+        timer->start(1000/speed);
+
+        emit jumpFinished();
+
+        count = 0;
+    }
+}
+
 
 void Dino::dinoDead(){
     dino->setPixmap(sprites->dead);

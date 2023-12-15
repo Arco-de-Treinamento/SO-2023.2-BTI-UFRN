@@ -43,7 +43,7 @@ void Game::gameStart(){
     this->addItem(obstacle);
     this->addItem(dino);
 
-    // connect(dino, &Dino::isJumped, this, &Game::test);
+    connect(dino, &Dino::isJump, obstacle, &Obstacle::setDinoJump);
 
     connect(obstacle, &Obstacle::isCollided, dino, &Dino::dinoDead);
     connect(obstacle, &Obstacle::isCollided, horizonline, &Horizonline::isGameOver);

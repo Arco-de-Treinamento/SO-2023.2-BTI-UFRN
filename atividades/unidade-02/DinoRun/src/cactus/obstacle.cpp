@@ -30,6 +30,11 @@ int Obstacle::getRand(){
     return (std::rand() %  MAX_UNIT_INTERVAL) + MIN_UNIT_INTERVAL;  // entre MIN E MAX
 }
 
+void Obstacle::setDinoJump(bool value){
+    isDinoJump = value;
+}
+
+
 void Obstacle::createCactus(){
     // Condicao de elatoriedade
     Cactus *cactus = new Cactus(POS_X, POS_Y, speed, POS_COLLIDER, SCREEN_SIZE - (getRand() * INTERVAL_UNIT), this);
@@ -44,11 +49,17 @@ void Obstacle::createCactus(){
 }
 
 void Obstacle::checkCollider(){
-    // Zera velocidade dos cactos
-    speed = 0;
+    std::cout << "Valor do pulo" << isDinoJump << std::endl;
+    if(!isDinoJump){
+        // Zera velocidade dos cactos
+        speed = 0;
 
-    for(Cactus* cactus : obstacles)
-        cactus->setSpeed(speed);
+        for(Cactus* cactus : obstacles)
+            cactus->setSpeed(speed);
 
-    emit isCollided();
+        emit isCollided();
+    }else{
+        std::cout <<"pulou"<< std::endl;
+    }
+
 }
